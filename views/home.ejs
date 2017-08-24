@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css">
+  </head>
+  <body>
+  <%if (body.length > 5) { %>
+    <section class="hero is-danger">
+  <% }else { %>
+    <section class="hero is-success">
+  <% }%>
+      <div class="hero-body is-success">
+
+        <div class="container">
+          <h1 class="title">Total tickets: <%=body.length%></h1>
+          <%if (body.length > 5) { %>
+            <h1 class="subtitle">Get to Work!</h1>
+          <% }else { %>
+            <h1 class="subtitle">Everything looks good!</h1>
+          <% }%>
+          <% %>
+        </div>
+      </div>
+
+    </section>
+    <section>
+      <div class="container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>REQ NAME</th>
+              <th>REQ STATUS</th>
+            </tr>
+          </thead>
+          <%body.forEach(function(req){ %>
+            <tr>
+              <th><%=req.number%></th>
+              <th><%=req.state%></th>
+            </tr>
+          <%})%>
+        </table>
+      </div>
+    </section>
+
+  </body>
+</html>
