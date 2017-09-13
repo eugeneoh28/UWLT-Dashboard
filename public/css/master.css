@@ -1,0 +1,12 @@
+.box-container {
+  display: flex;
+  padding:50px;
+}
+.box {
+  display: flex;
+  flex-direction: row;
+  margin: 25px;
+  height: 40vh;
+  width:45vw;
+  overflow-y: scroll;
+}
