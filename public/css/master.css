@@ -1,12 +1,43 @@
-.box-container {
-  display: flex;
-  padding:50px;
+
+.container-3 {
+  display:flex;
+  margin:0;
+  height:100vh;
 }
+.container-1 {
+  height:50vh;
+}
+.container-flex {
+  display: flex;
+  padding: 0 15px;
+}
+
+
 .box {
   display: flex;
   flex-direction: row;
-  margin: 25px;
-  height: 40vh;
-  width:45vw;
+  padding:0;
+  margin: 15px;
+  height: 30vh;
+  width:23vw;
   overflow-y: scroll;
+}
+
+.req-inc {
+  width:70vw;
+}
+.consult {
+  border-left: 1px solid grey;
+  width:30vw;
+}
+.req {
+  border-bottom: 1px solid grey;
+}
+
+
+.count {
+  padding: 15px 30px;
+  font-size: 200%;
+  font-weight:bold;
+  margin-bottom: 0;
 }
