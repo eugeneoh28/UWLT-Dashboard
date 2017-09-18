@@ -17,85 +17,51 @@
     <div class="container-3">
       <div class="container-2 req-inc">
         <div class="container-1 req">
-          <p class="count" id="totaltickets"> Total Tickets: <%=body.lms.count + body.multimedia.count + body.pollev.count%></p>
+          <p class=" count is-size-2" id="totaltickets"> Total Tickets: <%=body[0].count + body[1].count + body[2].count%></p>
           <div class="container-flex">
-            <div class="box">
+            <%body.forEach(function(req){ %>
+            <div class="box all-box content">
+              <h1 class="title"><%=req.name%></h1>
+              <h2 class="subtitle is-3">Number of Tickets: <strong><%=req.count%></strong></h2>
+              <h1 class = "is-size-4"> Oldest Ticket:</h1>
+              <ul>
+                <%if (req.oldest != undefined) { %>
+                <li class="is-size-5">Last Modified On: <%= req.oldest.sys_updated_on %> </li>
+                <%} else {%>
+                <li class="is-size-5"> N/A</li>
+                <%}%>
+              </ul>
+              <%if (req.oldest != undefined) {%>
+              <h1 class = "is-size-4">Ticket Details:</h1>
               <table class="table">
                 <thead>
                   <tr>
-                    <th>Canvas and Catalyst</th>
-                    <th id = "lmscount">Ticket #: <%= body.lms.count %></th>
-                  </tr>
-                  <tr>
-                    <th>REQ NAME</th>
-                    <th>STATUS</th>
-                    <th>DESCRIPTION</th>
-                    <th>LAST MODIFIED</th>
+                    <th>Req Number</th>
+                    <th>State</th>
+                    <th>Short Description</th>
                   </tr>
                 </thead>
-                <tbody class="canvasRequest">
-                  <%body.lms.oldest.forEach(function(req){ %>
-                    <tr>
-                      <th><%=req.number%></th>
-                      <th><%=req.state%></th>
-                      <th><%=req.description.substring(0, 20)%>...</th>
-                      <th><%=req.sys_updated_on%></th>
-                    </tr>
-                  <%})%>
+                <tbody class="tickets">
+                  <tr>
+                      <th><%=req.oldest.number%></th>
+                      <%if (req.oldest.state == 1) {%>
+                        <th>New</th>
+                      <%} else {%>
+                        <th>Open</th>
+                      <%}%>
+                      <th><%=req.oldest.short_description.substring(0,22)%></th>
+                  </tr>
                 </tbody>
               </table>
+              <%} %>
             </div>
-            <div class="box">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Multimedia</th>
-                    <th id = "multcount">Ticket #: <%= body.multimedia.count %></th>
-                  </tr>
-                  <tr>
-                    <th>REQ NAME</th>
-                    <th>STATUS</th>
-                    <th>DESCRIPTION</th>
-                    <th>LAST MODIFIED</th>
-                  </tr>
-                </thead>
-                <tbody class="multimediaRequest">
-                  <%body.multimedia.oldest.forEach(function(req){ %>
-                    <tr>
-                      <th><%=req.number%></th>
-                      <th><%=req.state%></th>
-                      <th><%=req.description.substring(0, 20)%>...</th>
-                      <th><%=req.sys_updated_on%></th>
-                    </tr>
-                  <%})%>
-                </tbody>
-              </table>
-            </div>
-            <div class="box">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Poll Everywhere</th>
-                    <th id = "pollcount">Ticket #: <%= body.pollev.count %></th>
-                  </tr>
-                  <tr>
-                    <th>REQ NAME</th>
-                    <th>STATUS</th>
-                    <th>DESCRIPTION</th>
-                    <th>LAST MODIFIED</th>
-                  </tr>
-                </thead>
-                <tbody class="pollevRequest">
-                  <%body.pollev.oldest.forEach(function(req){ %>
-                    <tr>
-                      <th><%=req.number%></th>
-                      <th><%=req.state%></th>
-                      <th><%=req.description.substring(0, 20)%>...</th>
-                      <th><%=req.sys_updated_on%></th>
-                    </tr>
-                  <%})%>
-                </tbody>
-              </table>
+            <%})%>
+          </div>
+          <div class="container-flex">
+            <div class=" box old-box content">
+              <h1 class= "title"><u>Oldest Ticket:</u> <i><%=oldest.number%></i></h1>
+              <h2 class="subtitle is-5"><u>State:</u> <i><%=oldest.state%></i></h2>
+              <h2 class="subtitle is-5"><u>Description:</u> <i><%=oldest.short_description%></i></h2>
             </div>
           </div>
         </div>
