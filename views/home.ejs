@@ -19,19 +19,19 @@
         <div class="container-1 req">
           <p class=" count is-size-2" id="totaltickets"> Total Tickets: <%=body[0].count + body[1].count + body[2].count%></p>
           <div class="container-flex">
-            <%body.forEach(function(req){ %>
+            <%for (var i = 0; i < 3; i++){ %>
             <div class="box all-box content">
-              <h1 class="title"><%=req.name%></h1>
-              <h2 class="subtitle is-3">Number of Tickets: <strong><%=req.count%></strong></h2>
+              <h1 class="title "><%=name[i]%></h1>
+              <h2 class="subtitle is-3">Number of Tickets: <strong><%=body[i].count%></strong></h2>
               <h1 class = "is-size-4"> Oldest Ticket:</h1>
               <ul>
-                <%if (req.oldest != undefined) { %>
-                <li class="is-size-5">Last Modified On: <%= req.oldest.sys_updated_on %> </li>
+                <%if (body[i].oldest != undefined) { %>
+                <li class="is-size-5">Last Modified On: <%= body[i].oldest.sys_updated_on %> </li>
                 <%} else {%>
                 <li class="is-size-5"> N/A</li>
                 <%}%>
               </ul>
-              <%if (req.oldest != undefined) {%>
+              <%if (body[i].oldest != undefined) {%>
               <h1 class = "is-size-4">Ticket Details:</h1>
               <table class="table">
                 <thead>
@@ -43,25 +43,28 @@
                 </thead>
                 <tbody class="tickets">
                   <tr>
-                      <th><%=req.oldest.number%></th>
-                      <%if (req.oldest.state == 1) {%>
+                      <th><%=body[i].oldest.number%></th>
+                      <%if (body[i].oldest.state == 1) {%>
                         <th>New</th>
                       <%} else {%>
                         <th>Open</th>
                       <%}%>
-                      <th><%=req.oldest.short_description.substring(0,22)%></th>
+                      <th><%=body[i].oldest.short_description.substring(0,20)%></th>
                   </tr>
                 </tbody>
               </table>
               <%} %>
             </div>
-            <%})%>
+            <%}%>
           </div>
           <div class="container-flex">
             <div class=" box old-box content">
               <h1 class= "title"><u>Oldest Ticket:</u> <i><%=oldest.number%></i></h1>
-              <h2 class="subtitle is-5"><u>State:</u> <i><%=oldest.state%></i></h2>
-              <h2 class="subtitle is-5"><u>Description:</u> <i><%=oldest.short_description%></i></h2>
+              <h2 class="subtitle is-5">
+                <u>Description:</u> <i><%=oldest.short_description%></i>
+                <br>
+                <u>State:</u> <i><%=oldest.state%></i>
+              </h2>
             </div>
           </div>
         </div>
