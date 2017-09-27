@@ -129,10 +129,9 @@
               <div class="box consult-box content">
                 <p class="is-size-4"><%=consult.number%></p>
                 <ul>
-                  <li >Consultation Date: <%=consult.due_date%></li>
-                  <li>Assigned to: <%=consult.assigned_to.link%></li>
-                  <li>Caller:</li>
-                  <li>Description:</li>
+                  <li >Consultation Date: <strong><%=consult.due_date%></strong></li>
+                  <li>Assigned to: <strong><%=consult.assigned_to.link%></strong></li>
+                  <li>Description: <strong><%=consult.short_description%></strong></li>
                 </ul>
               </div>
           <% }) %>
